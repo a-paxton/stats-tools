@@ -3,8 +3,8 @@ Just some bits of code to help clean up and display statistical analyses, largel
 
 Below are the current functions:
 * `pander_lme`: Clean up an `lme4` model output in a `pander`-like table. Requires `pander`.
- + Optional: Create caption with marginal (i.e., considering fixed effects only) and conditional (i.e., considering both fixed and random effects) *R*-squared. Requires `MuMIn`.
+    + Optional: Create caption with marginal (i.e., considering fixed effects only) and conditional (i.e., considering both fixed and random effects) *R*-squared. Requires `MuMIn`.
 * `pander_lm`: Clean up an `lm` model output in a `pander`-like table. Requires `pander`.
- + Optional: Create caption with adjusted *R*-squared and F-statistics.
+    + Optional: Create caption with adjusted *R*-squared and F-statistics.
 * `pander_lme_to_latex`: Export the output of an `lme4` model in a LaTex-friendly file. Requires `pander`, `Hmisc`, `plyr`, and `dplyr`.
- + Note: The resulting table still contains row indices. These must be manually deleted from the resulting `.tex` file if they are not needed.
+    + Note: The resulting table still contains row indices. These must be manually deleted from the resulting `.tex` file if they are not needed.
