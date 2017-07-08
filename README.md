@@ -8,3 +8,4 @@ Below are the current functions:
     + Optional: Create caption with adjusted *R*-squared and F-statistics.
 * `pander_lme_to_latex`: Export the output of an `lme4` model in a LaTex-friendly file. Requires `pander`, `Hmisc`, `plyr`, and `dplyr`.
     + Note: The resulting table still contains row indices. These must be manually deleted from the resulting `.tex` file if they are not needed.
+* `pander_anova`: Clean up an `anova` model output in a `pander`-like table, including adjusted *R*-squared and F-statistics in the caption. Requires `pander` and `plyr`.
