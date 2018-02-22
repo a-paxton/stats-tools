@@ -1,10 +1,22 @@
-# 'pander_lm': Create a cleaner lm model output with pander.
+# `pander_lm`
 #
-# Optional:
-#   Include caption with adjusted R-squared and F-stats.
+#  Create a cleaner lm model output with pander.
+#
+#  Parameters
+#  ----------
+#  lm_model_name : lm model
+#     Model whose output will be cleaned.
+#
+#  stats.caption : boolean, optional (default: FALSE)
+#     Specify whether or not to provide the adjusted
+#     R-squared and F-statistics in the table caption.
+#
+#  Output
+#  ------
+#  neat_output : table
+#     Cleaned lm model output.
 
-# "pander_lm": simplify lm printouts and include adjusted R-squared and F-stats
-pander_lm = function(lm_model_name, stats.caption){
+pander_lm = function(lm_model_name, stats.caption=FALSE){
 
   # load in pander
   require(pander)

@@ -1,10 +1,24 @@
-# 'pander_lme': Create a cleaner lme4 model output with pander.
+# `pander_lme`
 #
-# Optional (requires 'MuMIn'):
-#   Include caption with marginal (i.e., fixed effects only)
-#   and conditional (i.e., fixed and random effects) R-squared.
+#  Create a cleaner lme4 model output with pander.
+#
+#  Parameters
+#  ----------
+#  lme_model_name : lme4 model
+#     Model whose output will be cleaned.
+#
+#  stats.caption : boolean, optional (default: FALSE)
+#     Specify whether or not to provide the marginal
+#     (i.e., fixed effects only) and conditional (i.e.,
+#     fixed and random effects) R-squared values in the
+#     table's caption.
+#
+#  Output
+#  ------
+#  neat_output : pander table
+#     Cleaned lme4 model output.
 
-pander_lme = function(lme_model_name, stats.caption){
+pander_lme = function(lme_model_name, stats.caption=FALSE){
 
   # load in pander
   require(pander)

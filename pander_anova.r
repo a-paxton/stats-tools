@@ -1,4 +1,16 @@
-# 'pander_anova': Create a cleaner ANOVA model output with pander.
+# `pander_anova`
+#
+#  Create a cleaner ANOVA model output with pander.
+#
+#  Parameters
+#  ----------
+#  anova_model_name : ANOVA model
+#     Model whose output will be cleaned.
+#
+#  Output
+#  ------
+#  neat_output : pander table
+#     Cleaned ANOVA model output.
 
 pander_anova = function(anova_model_name){
 
