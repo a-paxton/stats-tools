@@ -24,7 +24,7 @@ Below are the current functions:
         * `pander`
         * `dplyr`
 * `xtable_lme`: Clean up an `lme4` model output in an `xtable`-compatible table.
-      + Requirements:
-          * `pander`
-          * `dplyr`
-          * `xtable`
+     + Requirements:
+        * `pander`
+        * `dplyr`
+        * `xtable`
