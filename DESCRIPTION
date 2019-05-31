@@ -1,0 +1,23 @@
+Package: statstool
+Title: An awesome R package with stats tolos
+Version: 0.0.0
+Author: Alex Paxton <alex.paxton@uconn.edu>
+Maintainer: Alex Paxton <alex.paxton@uconn.edu>
+Description: What the package does.
+Depends: R (>= 3.5)
+Imports: dplyr,
+	 pander,
+	 xtable
+Suggests: testthat (>= 1.0.0),
+	  knitr,
+	  rmarkdown,
+	  covr,
+	  shiny,
+	  DT,
+	  roxygen2,
+	  kableExtra
+VignetteBuilder: knitr
+License: MIT License + file LICENSE
+Encoding: UTF-8
+LazyData: false
+RoxygenNote: 6.1.1
