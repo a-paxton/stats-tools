@@ -1,24 +1,24 @@
+#'  Export an LMER summary table to a LaTex file.
+#'
+#'  Note that this will retain the row index column,
+#'  which will be given a name`neat" in the table.
+#'  This will be need to be manually removed in the
+#'  final `.tex` file.
+#'
+#'  Parameters
+#'  ----------
+#'  lme_model_name : lme4 model
+#'     Model whose output will be cleaned.
+#'
+#'  save_filename : str
+#'     File name for saved LaTex model.
+#'
+#'  Output
+#'  ------
+#'  neat_output : pander table
+#'     Cleaned lme4 model output.
+#' @export
 pander_lme_to_latex = function(lme_model_name, save_filename){
-
-  #'  Export an LMER summary table to a LaTex file.
-  #'
-  #'  Note that this will retain the row index column,
-  #'  which will be given a name`neat" in the table.
-  #'  This will be need to be manually removed in the
-  #'  final `.tex` file.
-  #'
-  #'  Parameters
-  #'  ----------
-  #'  lme_model_name : lme4 model
-  #'     Model whose output will be cleaned.
-  #'
-  #'  save_filename : str
-  #'     File name for saved LaTex model.
-  #'
-  #'  Output
-  #'  ------
-  #'  neat_output : pander table
-  #'     Cleaned lme4 model output.
 
   # load in pander
   require(pander)

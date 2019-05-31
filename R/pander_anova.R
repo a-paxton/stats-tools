@@ -1,20 +1,12 @@
+library(pander)
+library(plyr)
+
+#' Create a cleaner ANOVA model output with pander.
+#'
+#' @param anova_model_name ANOVA model. Model whose output will be cleaned.
+#' @return neat_output	pander table. Cleaned ANOVA model output.
+#' @export
 pander_anova = function(anova_model_name){
-
-  #'  Create a cleaner ANOVA model output with pander.
-  #'
-  #'  Parameters
-  #'  ----------
-  #'  anova_model_name : ANOVA model
-  #'     Model whose output will be cleaned.
-  #'
-  #'  Output
-  #'  ------
-  #'  neat_output : pander table
-  #'     Cleaned ANOVA model output.
-
-  # load in pander
-  require(pander)
-  require(plyr)
 
   # disable scientific notation
   options(scipen = 999)

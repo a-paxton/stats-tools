@@ -1,17 +1,16 @@
+#'  Create a cleaner lme4 model output for printing with xtable.
+#'
+#'  Parameters
+#'  ----------
+#'  lme_model_name : lme4 model
+#'     Model whose output will be cleaned.
+#'
+#'  Output
+#'  ------
+#'  neat_output : table
+#'     Cleaned lme4 model output.
+#' @export
 xtable_lme = function(lme_model_name){
-
-  #'  Create a cleaner lme4 model output for
-  #'  printing with xtable.
-  #'
-  #'  Parameters
-  #'  ----------
-  #'  lme_model_name : lme4 model
-  #'     Model whose output will be cleaned.
-  #'
-  #'  Output
-  #'  ------
-  #'  neat_output : table
-  #'     Cleaned lme4 model output.
 
   # load in pander
   library(pander)
