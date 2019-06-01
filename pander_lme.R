@@ -18,7 +18,9 @@ pander_lme = function(lme_model_name, stats.caption=FALSE){
   #'  Output
   #'  ------
   #'  neat_output : pander table
-  #'     Cleaned lme4 model output.
+  #'     Cleaned lme4 model output. Includes both raw and
+  #'     adjusted p-values.
+
 
   # load in pander
   require(pander)
@@ -31,9 +33,13 @@ pander_lme = function(lme_model_name, stats.caption=FALSE){
 
   # round p-values (using Psychological Science's recommendations) for display
   neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
-  # Now compute adjusted p-value
+  neat_output$p[neat_output$p < .0001] = .0001
+
+  # now compute adjusted p-value
   neat_output$p_adj = stats::p.adjust(neat_output$p, method="BH")
   neat_output$p_adj[neat_output$p_adj < .0001] = .0001
+
+  # display asterisks based on values
   neat_output$p_adj[neat_output$p_adj >= .0001] = round(neat_output$p_adj[neat_output$p_adj >= .0001],4)
   neat_output$p_adj[neat_output$p_adj >= .0005] = round(neat_output$p_adj[neat_output$p_adj >= .0005],3)
   neat_output$p_adj[neat_output$p_adj >= .25] = round(neat_output$p_adj[neat_output$p_adj >= .25],2)
