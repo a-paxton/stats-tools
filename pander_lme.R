@@ -1,3 +1,5 @@
+library(stats)
+
 pander_lme = function(lme_model_name, stats.caption=FALSE){
 
   #'  Create a cleaner lme4 model output with pander.
@@ -29,17 +31,19 @@ pander_lme = function(lme_model_name, stats.caption=FALSE){
 
   # round p-values (using Psychological Science's recommendations) for display
   neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
-  neat_output$p[neat_output$p < .0001] = .0001
-  neat_output$p[neat_output$p >= .0001] = round(neat_output$p[neat_output$p >= .0001],4)
-  neat_output$p[neat_output$p >= .0005] = round(neat_output$p[neat_output$p >= .0005],3)
-  neat_output$p[neat_output$p >= .25] = round(neat_output$p[neat_output$p >= .25],2)
+  # Now compute adjusted p-value
+  neat_output$p_adj = stats::p.adjust(neat_output$p, method="BH")
+  neat_output$p_adj[neat_output$p_adj < .0001] = .0001
+  neat_output$p_adj[neat_output$p_adj >= .0001] = round(neat_output$p_adj[neat_output$p_adj >= .0001],4)
+  neat_output$p_adj[neat_output$p_adj >= .0005] = round(neat_output$p_adj[neat_output$p_adj >= .0005],3)
+  neat_output$p_adj[neat_output$p_adj >= .25] = round(neat_output$p_adj[neat_output$p_adj >= .25],2)
 
   # create significance and trending markers
   neat_output$sig = ' '
-  neat_output$sig[neat_output$p < .1] = '.'
-  neat_output$sig[neat_output$p < .05] = '*'
-  neat_output$sig[neat_output$p < .01] = '**'
-  neat_output$sig[neat_output$p < .001] = '***'
+  neat_output$sig[neat_output$p_adj < .1] = '.'
+  neat_output$sig[neat_output$p_adj < .05] = '*'
+  neat_output$sig[neat_output$p_adj < .01] = '**'
+  neat_output$sig[neat_output$p_adj < .001] = '***'
 
   # if desired, create a caption that includes R-squared
   if (stats.caption == TRUE){
