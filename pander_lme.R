@@ -31,19 +31,21 @@ pander_lme = function(lme_model_name, stats.caption=FALSE){
   # convert the model summary to a dataframe
   neat_output = data.frame(summary(lme_model_name)$coefficient)
 
-  # round p-values (using Psychological Science's recommendations) for display
+  # calculate p-value (per recommendations by Barr, Levy, Scheepers, & Tily, 2013)
   neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
-  neat_output$p[neat_output$p < .0001] = .0001
-  neat_output$p[neat_output$p >= .0001] = round(neat_output$p[neat_output$p >= .0001],4)
-  neat_output$p[neat_output$p >= .0005] = round(neat_output$p[neat_output$p >= .0005],3)
-  neat_output$p[neat_output$p >= .25] = round(neat_output$p[neat_output$p >= .25],2)
 
-  # now compute adjusted p-value and round for displays
+  # compute adjusted p-value and round for displays (using Psychological Science's recommendations)
   neat_output$p_adj = stats::p.adjust(neat_output$p, method="BH")
   neat_output$p_adj[neat_output$p_adj < .0001] = .0001
   neat_output$p_adj[neat_output$p_adj >= .0001] = round(neat_output$p_adj[neat_output$p_adj >= .0001],4)
   neat_output$p_adj[neat_output$p_adj >= .0005] = round(neat_output$p_adj[neat_output$p_adj >= .0005],3)
   neat_output$p_adj[neat_output$p_adj >= .25] = round(neat_output$p_adj[neat_output$p_adj >= .25],2)
+
+  # round unadjusted p-values for display
+  neat_output$p[neat_output$p < .0001] = .0001
+  neat_output$p[neat_output$p >= .0001] = round(neat_output$p[neat_output$p >= .0001],4)
+  neat_output$p[neat_output$p >= .0005] = round(neat_output$p[neat_output$p >= .0005],3)
+  neat_output$p[neat_output$p >= .25] = round(neat_output$p[neat_output$p >= .25],2)
 
   # create significance and trending markers
   neat_output$sig = ' '
