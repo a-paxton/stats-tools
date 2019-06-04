@@ -34,12 +34,12 @@ pander_lme = function(lme_model_name, stats.caption=FALSE){
   neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
 
   # Check whether p-values are here
-  if(is.null(neat_output$"Pr...t.."){
+  if(is.null(neat_output$"Pr...t..")){
     # calculate p-value (per recommendations by Barr, Levy, Scheepers, & Tily, 2013)
     neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
   }else{
     neat_output$p = neat_output$"Pr...t.."
-    neat_output = subset(neat_output, select=-c("Pr...t..")
+    neat_output = subset(neat_output, select=-c(Pr...t..))
   }
 
   neat_output$p_adj = stats::p.adjust(neat_output$p, method="BH")
