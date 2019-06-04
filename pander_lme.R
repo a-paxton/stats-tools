@@ -31,11 +31,20 @@ pander_lme = function(lme_model_name, stats.caption=FALSE){
   # convert the model summary to a dataframe
   neat_output = data.frame(summary(lme_model_name)$coefficient)
 
-  # calculate p-value (per recommendations by Barr, Levy, Scheepers, & Tily, 2013)
   neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
 
-  # compute adjusted p-value and round for displays (using Psychological Science's recommendations)
+  # Check whether p-values are here
+  if(is.null(neat_output$"Pr...t.."){
+    # calculate p-value (per recommendations by Barr, Levy, Scheepers, & Tily, 2013)
+    neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
+  }else{
+    neat_output$p = neat_output$"Pr...t.."
+    neat_output = subset(neat_output, select=-c("Pr...t..")
+  }
+
   neat_output$p_adj = stats::p.adjust(neat_output$p, method="BH")
+
+  # round p-values (using Psychological Science's recommendations) for display
   neat_output$p_adj[neat_output$p_adj < .0001] = .0001
   neat_output$p_adj[neat_output$p_adj >= .0001] = round(neat_output$p_adj[neat_output$p_adj >= .0001],4)
   neat_output$p_adj[neat_output$p_adj >= .0005] = round(neat_output$p_adj[neat_output$p_adj >= .0005],3)
