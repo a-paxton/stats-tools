@@ -26,7 +26,8 @@ pander_lm = function(lm_model_name, stats.caption=FALSE){
   neat_output = data.frame(summary(lm_model_name)$coefficient)
 
   # round p-values (using Psychological Science's recommendations)
-  neat_output$p = 2*(1-pnorm(abs(neat_output$t.value)))
+  neat_output$p = neat_output$"Pr...t.."
+  neat_output = subset(neat_output, select=-c(Pr...t..))
   neat_output$p[neat_output$p < .0001] = .0001
   neat_output$p[neat_output$p >= .0001] = round(neat_output$p[neat_output$p >= .0001],4)
   neat_output$p[neat_output$p >= .0005] = round(neat_output$p[neat_output$p >= .0005],3)
@@ -52,7 +53,7 @@ pander_lm = function(lm_model_name, stats.caption=FALSE){
 
     # return the table
     return(pander(neat_output, split.table = Inf, caption = neat_caption, style = 'rmarkdown'))
-  }else{ # or return a table without the caption
-    return(pander(neat_output, style="rmarkdown",split.table = Inf, style = 'rmarkdown'))
+  } else { # or return a table without the caption
+    return(pander(neat_output, style="rmarkdown", split.table = Inf))
   }
 }
