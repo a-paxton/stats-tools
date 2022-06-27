@@ -1,4 +1,4 @@
-pander_lm = function(lm_model_name, stats.caption=FALSE){
+pander_lm = function(lm_model_name, stats.caption=FALSE, p.adj=TRUE){
 
   #'  Create a cleaner lm model output with pander.
   #'
@@ -10,6 +10,10 @@ pander_lm = function(lm_model_name, stats.caption=FALSE){
   #'  stats.caption : boolean, optional (default: FALSE)
   #'     Specify whether or not to provide the adjusted
   #'     R-squared and F-statistics in the table caption.
+  #'
+  #'  p.adj : boolean, optional (default: TRUE)
+  #'     Specify whether or not to provide the adjusted
+  #'     p-value in the table (using Benjamini & Hochberg, 1995).
   #'
   #'  Output
   #'  ------
